@@ -53,12 +53,14 @@
         _outerStyleView = [[UIImageView alloc]init];
         _outerStyleView.userInteractionEnabled = NO;
         _outerStyleView.frame = self.bounds;
+        _outerStyleView.contentMode = UIViewContentModeScaleAspectFill;
         [self addSubview:_outerStyleView];
         
         _innerClipView = [[UIImageView alloc]init];
         _innerClipView.userInteractionEnabled = NO;
         _innerClipView.frame = self.bounds;
         _innerClipView.layer.masksToBounds = YES;
+        _innerClipView.contentMode = UIViewContentModeScaleAspectFill;
         [_outerStyleView addSubview:_innerClipView];
         
         _primaryImageView = [self createImageView];
@@ -87,7 +89,7 @@
 - (UIImageView*) createImageView
 {
     UIImageView* imageView = [[UIImageView alloc]init];
-    imageView.contentMode = UIViewContentModeScaleToFill;
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
     imageView.userInteractionEnabled = NO;
     imageView.frame = self.bounds;
     return imageView;

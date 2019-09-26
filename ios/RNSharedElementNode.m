@@ -208,21 +208,31 @@ NSArray* _imageResolvers;
         content = [[UIView alloc]init];
         contentType = RNSharedElementContentTypeSnapshotView;
     }
+//    else {
+//        UIView* snapshotView = [_view snapshotViewAfterScreenUpdates:NO];
+//        content = snapshotView;
+//        contentType = RNSharedElementContentTypeSnapshotView;
+//    }
     else {
-        UIView* snapshotView = [_view snapshotViewAfterScreenUpdates:NO];
-        content = snapshotView;
-        contentType = RNSharedElementContentTypeSnapshotView;
-    }
-    /*else {
-        NSLog(@"drawViewHierarchyInRect: bounds: %@", NSStringFromCGRect(bounds));
+//        NSLog(@"drawViewHierarchyInRect: bounds: %@", NSStringFromCGRect(bounds));
         UIGraphicsBeginImageContextWithOptions(bounds.size, NO, 0.0f);
-        BOOL res = [view drawViewHierarchyInRect:bounds afterScreenUpdates:NO]; // NEVER USE YES, IT CREATED VISUAL ARTEFACTS ON THE CREEN
+        BOOL res = [view drawViewHierarchyInRect:bounds afterScreenUpdates:YES]; // NEVER USE YES, IT CREATED VISUAL ARTEFACTS ON THE CREEN
         UIImage* image = res ? UIGraphicsGetImageFromCurrentImageContext() : nil;
         UIGraphicsEndImageContext();
-        NSLog(@"drawViewHierarchyInRect: RESULT: %li", res);
+//        NSLog(@"drawViewHierarchyInRect: RESULT: %li", res);
         content = image;
         contentType = RNSharedElementContentTypeSnapshotImage;
-    }*/
+    }
+//    else {
+//        UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0);
+//        [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+//
+//        content = UIGraphicsGetImageFromCurrentImageContext();
+//
+//        UIGraphicsEndImageContext();
+//
+//        contentType = RNSharedElementContentTypeRawImage;
+//    }
     
     // If the content could not be obtained, then try again later
     if (content == nil) {
